@@ -41,13 +41,7 @@
               <a href="#"> bonjour </a>
               <a href="#"> bonjour </a>
               <a href="#"> bonjour </a>
-              <a href="#"> bonjour </a>
-              <a href="#"> bonjour </a>
-              <a href="#"> bonjour </a>
-              <a href="#"> bonjour </a>
-              <a href="#"> bonjour </a>
-              <a href="#"> bonjour </a>
-              <a href="#"> bonjour </a>
+
               <h6><a href="#"> Solution Architecture </a></h6>
               <a href="#"> bonjour </a>
               <a href="#"> bonjour </a>
@@ -81,60 +75,26 @@
         </div>
           <div class="container bg-white align-content-start border rounded col-9">
               <div class="container-fluid">
-                <p> bosoir <pa>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
-                <p> bonjour </p>
+                <h2> 1	Introduction </h2>
+                 <p> This tool processes transactions reports issued by the Mowali platform with the following objectives:
+                    ⁻	Keep track of the amounts due between DFSPs to settle their transactions.
+                    ⁻	Process settlement forex rate information received from the settlement bank/forex provider.
+                    ⁻	Prepare settlement files (sometimes also called reconciliation files) for DFSPs, summarizing the amounts they are about to settle with each DFSP they transact with.
+                    ⁻	Prepare "physical settlement", i.e. list all the payments and forex orders that should be sent to Mowali's partner bank(s) to settle a specific set of transactions. This extend to cases where the receiver's account is prefunded by the sender (aka pre-settled corridors). In that case, there is no "physical settlement" per se, but prefunding is managed in a similar way: the tool estimates the amounts necessary to prefund the next period and lists the corresponding payment orders to transfer these amounts from net senders to net receivers' accounts.
+                    ⁻	Issue all forex order files (and payment files in a future version).
+                    ⁻	Track each DFSP's liquidities, including  liquidities in other currencies than their own (when they prefund receivers' settlement accounts)
+
+                    ⁻	Identify and isolates "abnormal" transactions (i.e. transactions with pending or inconsistent statuses) for reconciliation purposes.
+                    Based on the above, maintain a list of actions the business ops team should perform on Mowali's platform: operations on settlement ledgers, windows to be marked as settled once physical settlement has been completed…
+                    The batch of transactions to be settled is selected as follows:
+                    ⁻	For international corridors with a rate that changes every day: all transactions with a given rateSetID .
+                    ⁻	For single currency corridors OR corridors with a fixed rate that never changes (pegged currencies as EUR-XOF of EUR-XAF) OR  pre-settled corridors: all transactions with a given windowID.
+                    At each settlement operation, business ops select  the rateSetIDs and/or windowIDs they want to settle. The tool picks the corresponding transactions and performs the tasks described above for these transactions only - with one exception: the selection of abnormal transactions and the maintenance of their list applies to all the transactions found in the transaction reports.
+                    Some additional tools are also available to facilitate business operations, aside from the settlement process. They are described separately at the end of this document.
+                 </p>
               </div>
           </div>
       </div>
-
-
 
     <hr size="10px">
         <nav class="navbar-dark bg-dark fixed-bottom">
